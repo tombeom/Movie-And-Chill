@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie & Chill</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="img/favicon/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gugi&family=IBM+Plex+Sans+KR:wght@200;400;600&family=Nanum+Gothic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style></style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-[#ffffff] text-[#212631] dark:bg-[#10111a] dark:text-[#deeaff]"
+  >
+    <header
+      class="w-full fixed top-0 bg-[#ffffff] drop-shadow-lg py-5 dark:bg-[#212531]"
+    >
+      <h1 class="font-[Gugi] text-[#cf311d] text-3xl text-left pl-20 font-bold">
+        <a href="#">Movie & Chill</a>
+      </h1>
+      <nav></nav>
+    </header>
+    <main class="font-['IBM_Plex_Sans_KR'] text-center">
+      <section>
+        <div
+          class="bg-[url('img/bg.jpg')] bg-cover bg-center grid grid-flow-row-dense grid-cols-5"
+        >
+          <div
+            class="mt-40 ml-20 mb-24 text-zinc-50 text-left col-span-5 font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+          >
+            <p class="text-4xl mb-4">오늘 어떤 영화 보고 싶으세요?</p>
+            <p class="text-4xl mb-8">ChatGPT에게 물어보세요!</p>
+
+            <button
+              class="p-5 mt-6 rounded-lg bg-[#4e9aff] text-xl"
+              href="#movieRecommend"
+            >
+              지금 물어보기!
+            </button>
+          </div>
+        </div>
+        <div class="my-8">
+          <p class="text-3xl">Netflix 추천 영화</p>
+          <div>
+            <button
+              id="prev-button"
+              class="bg-gray-300 w-3 h-3 rounded-full"
+            ></button>
+            <button
+              id="next-button"
+              class="bg-gray-300 w-3 h-3 rounded-full"
+            ></button>
+            <button
+              id="next-button"
+              class="bg-gray-300 w-3 h-3 rounded-full"
+            ></button>
+          </div>
+        </div>
+        <div class="my-8" id="movieRecommend">
+          <p class="text-3xl">ChatGPT에게 영화 추천 받기</p>
+        </div>
+        <div id="MovieCarousel"></div>
+        <div
+          id="inputForm"
+          class="grid gap-4 grid-flow-row-dense grid-cols-3 mx-20 drop-shadow-lg"
+        >
+          <div class="rounded-md border-2 bg-slate-100">
+            <p class="my-6 dark:text-[#10111a]">오늘 날씨는 어떤가요?</p>
+            <input
+              class="rounded-md border-2 text-center mb-8"
+              type="text"
+              placeholder="맑음"
+              name="todaysWeather"
+            />
+          </div>
+          <div class="rounded-md border-2 bg-slate-100">
+            <p class="my-6 dark:text-[#10111a]">지금 분위기는 어때요?</p>
+            <input
+              class="rounded-md border-2 text-center mb-8"
+              type="text"
+              placeholder="달콤한"
+              name="todaysAtmosphere"
+            />
+          </div>
+          <button
+            class="rounded-md bg-[#4e9aff] text-3xl text-zinc-50 font-bold row-span-2"
+            href="#"
+          >
+            알려줘!
+          </button>
+          <div class="rounded-md border-2 bg-slate-100">
+            <p class="my-6 dark:text-[#10111a]">
+              영화를 같이 보는 사람은 누구예요?
+            </p>
+            <input
+              class="rounded-md border-2 text-center mb-8"
+              type="text"
+              placeholder="남자친구"
+              name="withWho"
+            />
+          </div>
+          <div class="rounded-md border-2 bg-slate-100">
+            <p class="my-6 dark:text-[#10111a]">몇 명이서 영화를 보나요?</p>
+            <input
+              class="rounded-md border-2 text-center mb-8"
+              type="number"
+              placeholder="2명"
+              name="personOfNumber"
+            />
+          </div>
+        </div>
+        <div
+          class="bg-slate-100 border-2 rounded-lg drop-shadow-lg mt-8 mb-20 mx-20"
+          id="chatForm"
+        >
+          <div class="flex flex-col h-full">
+            <div class="flex-1 overflow-y-auto">
+              <div class="flex mt-6">
+                <div class="w-10 h-10 rounded-full overflow-hidden mt-2 ml-8">
+                  <img
+                    class="w-full h-full object-cover"
+                    src="img/chatIcon.png"
+                    alt="상대방 프로필 사진"
+                  />
+                </div>
+                <p
+                  class="mt-1 ml-4 p-3 bg-slate-300 rounded-lg dark:text-[#10111a]"
+                >
+                  멋진 영화를 추천해드릴게요😊
+                </p>
+              </div>
+              <div class="float-right mt-6 mb-8 mr-6">
+                <p
+                  class="mt-1 ml-4 p-3 bg-slate-300 rounded-lg dark:text-[#10111a]"
+                >
+                  어떤 영화가 좋을까~
+                </p>
+              </div>
+            </div>
+            <div class="flex px-6 pb-4">
+              <input
+                type="text"
+                class="flex-1 rounded-l-lg p-2 placeholder:pl-3 font-bold"
+                placeholder="다른 질문이 있으신가요?"
+              />
+              <button
+                class="bg-blue-500 text-zinc-50 font-bold px-4 rounded-r-lg"
+              >
+                전송
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="w-full fixed bottom-0 font-['Bebas_Neue'] bg-[#ffffff] shadow-lg shadow-black py-2.5 text-center dark:bg-[#212531]"
+    >
+      &copy;2023 tombeom All rights reserved.
+    </footer>
+  </body>
+</html>
