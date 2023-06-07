@@ -1,6 +1,5 @@
 const $chatbModalOpen = document.querySelector("#openChatModal");
-const $chatModal = document.querySelector("#chatModal");
-const $closeBtn = document.querySelector("#closeBtn");
+const $closeBtn = document.querySelector("#chatCloseBtn");
 
 function openChatModal() {
   $chatModal.style.display = "block";
