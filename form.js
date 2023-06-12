@@ -1,6 +1,6 @@
 const modalHTMLForm = `
 <div
-  class="bg-slate-100 border-2 rounded-lg drop-shadow-lg mt-10 mb-16 mx-6 min-w-[290px]"
+  class="bg-slate-100 border-2 rounded-lg drop-shadow-lg mt-10 mb-16 mx-6"
   id="chatForm"
 >
   <div class="m-4 flex flex-row-reverse">
@@ -22,7 +22,7 @@ const modalHTMLForm = `
     </button>
     <input
       type="text"
-      class="flex-1 rounded-l-lg p-2 dark:text-[#212631] md:placeholder:pl-2"
+      class="flex-1 w-10 rounded-l-lg p-2 dark:text-[#212631] md:placeholder:pl-2"
       id="chatInput"
     />
     <button

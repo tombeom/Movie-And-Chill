@@ -73,7 +73,7 @@
     </header>
     <!-- // Header -->
     <!-- Masthead -->
-    <div class="pt-24 bg-[url('/img/bg.png')] bg-cover bg-center">
+    <div class="pt-24 bg-[url('./img/bg.png')] bg-cover bg-center">
       <div
         class="grid grid-row-3 gap-y-4 ml-6 text-left text-xl text-zinc-50 font-bold md:ml-20 md:text-2xl lg:w-[768px] lg:mx-auto"
       >
@@ -88,12 +88,6 @@
       </div>
     </div>
     <!-- // Masthead -->
-    <!-- Chat Modal (JS) -->
-    <div
-      class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
-      id="chatModal"
-    ></div>
-    <!-- // Chat Modal -->
     <!-- Main Contents -->
     <section>
       <main class="mx-auto text-center mb-16 w-[280px] md:w-[768px]" id="main">
@@ -111,6 +105,12 @@
       id="footerMsg"
     ></footer>
     <!-- // Footer -->
+    <!-- Chat Modal (JS) -->
+    <div
+      class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto"
+      id="chatModal"
+    ></div>
+    <!-- // Chat Modal -->
     <!-- Load JS Files -->
     <script src="form.js"></script>
     <script src="init.js"></script>
