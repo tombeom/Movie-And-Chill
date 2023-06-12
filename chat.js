@@ -3,6 +3,26 @@ const $chatSendBtn = document.querySelector("#chatSendBtn");
 const $chatClearBtn = document.querySelector("#chatClearBtn");
 const $chatList = document.querySelector("#chatList");
 
+let chatData = [
+  {
+    role: "system",
+    content:
+      "assistant는 한국에서 영화를 추천해 주는 역할이고 친구에게 말하듯 친절하게 이야기해줘",
+  },
+];
+
+function initChatData(chatData) {
+  chatData = [
+    {
+      role: "system",
+      content:
+        "assistant는 한국에서 영화를 추천해 주는 역할이고 친구에게 말하듯 친절하게 이야기해줘",
+    },
+  ];
+
+  return chatData;
+}
+
 function addUserChat(userMsg) {
   if (userMsg != "") {
     let userChat = `
@@ -15,7 +35,7 @@ function addUserChat(userMsg) {
   }
 }
 
-function addAIChat(AIMsg) {
+function addAIChat(receviedMsg) {
   let AIChat = `
   <div class="flex justify-start mt-3 mx-4">
     <div class="w-8 h-8 rounded-full overflow-hidden shrink-0">
@@ -25,21 +45,48 @@ function addAIChat(AIMsg) {
       />
     </div>
     <p class="ml-2 p-2 bg-slate-200 rounded-lg dark:text-[#10111a] break-all">
-    ${AIMsg}
+    ${receviedMsg}
     </p>
   </div>`;
   $chatList.insertAdjacentHTML("beforeend", AIChat);
 }
 
-function getValue() {
-  let inputData = $chatInput.value;
-  addUserChat(inputData);
-  $chatInput.value = "";
-  inputData = "";
+function createTempAIChat() {
+  let AIChat = `
+  <div class="flex justify-start mt-3 mx-4" id="tempAIChat">
+    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0">
+      <img
+        src="img/chatIcon.png"
+        alt="Movie AI"
+      />
+    </div>
+    <p class="animate-pulse ml-2 p-2 bg-slate-200 rounded-lg dark:text-[#10111a] break-all">
+    답변을 생성 중입니다...🤖
+    </p>
+  </div>`;
+  $chatList.insertAdjacentHTML("beforeend", AIChat);
 }
 
-function clearChat() {
-  $chatList.innerHTML = "";
+function deleteTempAIChat() {
+  document.querySelector("#tempAIChat").remove();
+}
+
+function addChatData(player, msg) {
+  chatData.push({
+    role: player,
+    content: msg,
+  });
+}
+
+function getValue() {
+  let inputData = $chatInput.value.toString();
+  addUserChat(inputData);
+  $chatInput.value = "";
+  addChatData("user", inputData);
+  postData(chatData);
+  inputData = "";
+  document.querySelector("#chatInput").placeholder =
+    "또 궁금한 점이 있으신가요?";
 }
 
 function detectInputEnter(inputKey) {
@@ -55,52 +102,28 @@ $chatInput.addEventListener("keydown", (inputKey) =>
 
 $chatClearBtn.addEventListener("click", clearChat);
 
-let data = [
-  {
-    role: "system",
-    content: "너는 한국에서 서비스하는 넷플릭스 영화를 추천해줘",
-  },
-];
-
-async function postData() {
+async function postData(chatData) {
   const url = "https://estsoft-openai-api.jejucodingcamp.workers.dev/";
 
+  createTempAIChat();
   const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(chatData),
     redirect: "follow",
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
-      // 데이터 수신 이후 코드 삽입
+      try {
+        let aiMsg = res.choices[0].message.content.toString();
+        deleteTempAIChat();
+        addAIChat(aiMsg);
+        addChatData("assistant", aiMsg);
+      } catch (e) {
+        console.log(e);
+        addAIChat("오류가 발생했어요... 페이지를 새로고침 해주세요 🤖");
+      }
     });
 }
-
-// 모달 작동부
-const $chatbModalOpen = document.querySelector("#openChatModal");
-const $closeBtn = document.querySelector("#chatCloseBtn");
-
-function openChatModal() {
-  $chatModal.style.display = "block";
-  document.querySelector("#chatInput").placeholder = "궁금한 것이 있으신가요?";
-}
-
-function closeChatModal() {
-  $chatModal.style.display = "none";
-}
-
-$chatbModalOpen.addEventListener("click", openChatModal);
-$closeBtn.addEventListener("click", closeChatModal);
-
-window.addEventListener("onclick", closeChatModal);
-
-// 모달 밖 클릭하면 숨김
-window.onclick = function (event) {
-  if (event.target == $chatModal) {
-    closeChatModal();
-  }
-};
