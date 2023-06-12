@@ -44,6 +44,33 @@ const $recommendQuestion4SendBtn = document.querySelector(
   "#recommendQuestion4SendBtn"
 );
 
+function cilckRecommendSendBtn() {
+  let inputData1 = $recommendQuestion1Input.value.toString();
+  let inputData2 = $recommendQuestion2Input.value.toString();
+  let inputData3 = $recommendQuestion3Input.value.toString();
+  let inputData4 = $recommendQuestion4Input.value.toString();
+
+  if (inputData4 === "") {
+    alert();
+  } else {
+    let sendData =
+      "오늘 날씨는 " +
+      inputData1 +
+      ". 그리고 " +
+      inputData2 +
+      " 분위기야." +
+      " 나는 " +
+      inputData3 +
+      "와(과) " +
+      inputData4 +
+      "명이서 영화를 볼 건데 지금 볼만한 영화 추천해 줘";
+    openChatModal("또 궁금한 점이 있으신가요?");
+    addUserChat(sendData);
+    addChatData("user", sendData);
+    postData(chatData);
+  }
+}
+
 function changeQuestions(
   showQuestion,
   hideQuestion1,
@@ -64,12 +91,16 @@ changeQuestions(
 );
 
 $recommendQuestion1NextBtn.addEventListener("click", function () {
-  changeQuestions(
-    $recommendQuestion2,
-    $recommendQuestion1,
-    $recommendQuestion3,
-    $recommendQuestion4
-  );
+  if ($recommendQuestion1Input.value.toString() === "") {
+    alert();
+  } else {
+    changeQuestions(
+      $recommendQuestion2,
+      $recommendQuestion1,
+      $recommendQuestion3,
+      $recommendQuestion4
+    );
+  }
 });
 
 $recommendQuestion2BeforeBtn.addEventListener("click", function () {
@@ -82,12 +113,16 @@ $recommendQuestion2BeforeBtn.addEventListener("click", function () {
 });
 
 $recommendQuestion2NextBtn.addEventListener("click", function () {
-  changeQuestions(
-    $recommendQuestion3,
-    $recommendQuestion1,
-    $recommendQuestion2,
-    $recommendQuestion4
-  );
+  if ($recommendQuestion2Input.value.toString() === "") {
+    alert();
+  } else {
+    changeQuestions(
+      $recommendQuestion3,
+      $recommendQuestion1,
+      $recommendQuestion2,
+      $recommendQuestion4
+    );
+  }
 });
 
 $recommendQuestion3BeforeBtn.addEventListener("click", function () {
@@ -100,12 +135,16 @@ $recommendQuestion3BeforeBtn.addEventListener("click", function () {
 });
 
 $recommendQuestion3NextBtn.addEventListener("click", function () {
-  changeQuestions(
-    $recommendQuestion4,
-    $recommendQuestion1,
-    $recommendQuestion2,
-    $recommendQuestion3
-  );
+  if ($recommendQuestion3Input.value.toString() === "") {
+    alert();
+  } else {
+    changeQuestions(
+      $recommendQuestion4,
+      $recommendQuestion1,
+      $recommendQuestion2,
+      $recommendQuestion3
+    );
+  }
 });
 
 $recommendQuestion4BeforeBtn.addEventListener("click", function () {
@@ -116,3 +155,5 @@ $recommendQuestion4BeforeBtn.addEventListener("click", function () {
     $recommendQuestion4
   );
 });
+
+$recommendQuestion4SendBtn.addEventListener("click", cilckRecommendSendBtn);
