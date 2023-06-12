@@ -1,9 +1,9 @@
 const $homeBtn = document.querySelector("#homeBtn");
 const $mbtiBtn = document.querySelector("#mbtiBtn");
-const $similarBtn = document.querySelector("#similarBtn");
+const $similarGenreBtn = document.querySelector("#similarGenreBtn");
 const $movieRecommend = document.querySelector("#movieRecommend");
 const $mbtiRecommend = document.querySelector("#mbtiRecommend");
-const $similarRecommend = document.querySelector("#similarRecommend");
+const $similarGenreRecommend = document.querySelector("#similarGenreRecommend");
 
 function hideMenu(menu1, menu2) {
   menu1.style.display = "none";
@@ -15,20 +15,20 @@ function showMenu(menu1) {
 }
 
 function changeToMain() {
-  hideMenu($mbtiRecommend, $similarRecommend);
+  hideMenu($mbtiRecommend, $similarGenreRecommend);
   showMenu($movieRecommend);
 }
 
 function changeToMBTI() {
-  hideMenu($movieRecommend, $similarRecommend);
+  hideMenu($movieRecommend, $similarGenreRecommend);
   showMenu($mbtiRecommend);
 }
 
-function changeToSimilar() {
+function changeToSimilarGenre() {
   hideMenu($movieRecommend, $mbtiRecommend);
-  showMenu($similarRecommend);
+  showMenu($similarGenreRecommend);
 }
 
 $homeBtn.addEventListener("click", changeToMain);
 $mbtiBtn.addEventListener("click", changeToMBTI);
-$similarBtn.addEventListener("click", changeToSimilar);
+$similarGenreBtn.addEventListener("click", changeToSimilarGenre);

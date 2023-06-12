@@ -38,7 +38,7 @@
   >
     <!-- Header -->
     <header
-      class="w-full fixed bg-[#ffffff] drop-shadow-lg py-3 dark:bg-[#212531]"
+      class="w-full fixed bg-[#ffffff] py-3 shadow-xl dark:bg-[#212531] z-40"
     >
       <!-- Title & Nav Btn -->
       <div class="flex justify-between lg:w-[920px] lg:mx-auto">
@@ -54,14 +54,14 @@
         <nav>
           <ul class="flex gap-4 mr-4 text-xl md:mr-10 md:text-2xl">
             <li
-              class="px-2 rounded-full bg-slate-200 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
+              class="px-2 rounded-full shadow-2xl bg-slate-200 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
               id="mbtiBtn"
             >
               🧠
             </li>
             <li
-              class="px-2 rounded-full bg-slate-200 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
-              id="similarBtn"
+              class="px-2 rounded-full shadow-2xl bg-slate-200 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
+              id="similarGenreBtn"
             >
               🎬
             </li>
@@ -75,13 +75,13 @@
     <!-- Masthead -->
     <div class="pt-24 bg-[url('./img/bg.png')] bg-cover bg-center">
       <div
-        class="grid grid-row-3 gap-y-4 ml-6 text-left text-xl text-zinc-50 font-bold md:ml-20 md:text-2xl lg:w-[768px] lg:mx-auto"
+        class="grid grid-row-3 gap-y-4 ml-6 text-left text-xl text-zinc-50 font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)] md:ml-20 md:text-2xl lg:w-[768px] lg:mx-auto"
       >
         <p>오늘 어떤 영화 보고 싶으세요?</p>
         <p>ChatGPT에게 물어보세요!</p>
         <button
           class="w-40 p-3 mb-10 rounded-lg bg-gradient-to-r from-[#06b6d4] to-[#4e9aff] active:from-[#FFE236] active:to-[#FFA369] md:w-60"
-          id="openChatModal"
+          id="chatOpenBtn"
         >
           지금 물어보기!
         </button>
@@ -101,23 +101,26 @@
     <!-- // Main Contents -->
     <!-- Footer -->
     <footer
-      class="w-full fixed bottom-0 font-light text-sm text-center bg-[#ffffff] shadow-lg shadow-black py-1 dark:bg-[#212531]"
+      class="w-full fixed bottom-0 font-light text-sm text-center bg-[#ffffff] shadow-2xl shadow-black py-1 z-40 dark:bg-[#212531]"
       id="footerMsg"
     ></footer>
     <!-- // Footer -->
     <!-- Chat Modal (JS) -->
     <div
-      class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto"
+      class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto z-50"
       id="chatModal"
     ></div>
     <!-- // Chat Modal -->
     <!-- Load JS Files -->
     <script src="form.js"></script>
     <script src="init.js"></script>
-    <script src="carousel.js"></script>
     <script src="menu.js"></script>
+    <script src="carousel.js"></script>
+    <script src="modal.js"></script>
     <script src="chat.js"></script>
     <script src="recommend.js"></script>
+    <script src="mbti.js"></script>
+    <script src="similarGenre.js"></script>
     <!-- // Load JS Files -->
   </body>
 </html>

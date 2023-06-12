@@ -2,7 +2,6 @@ const $carousel = document.querySelector("#carousel");
 const $leftButton = document.querySelector("#leftButton");
 const $rightButton = document.querySelector("#rightButton");
 
-const moveValue = 284;
 let currentValue = 0;
 
 function slideLeft() {

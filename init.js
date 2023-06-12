@@ -78,8 +78,8 @@ function drawCarousel() {
   $main.insertAdjacentHTML("afterbegin", carouselHTMLForm);
   const $carouselContainer = document.querySelector("#carouselContainer");
 
-  const smImgElementsCreate = "w-72 mr-14 rounded-md";
-  const mdImgElementsCreate = "w-52 mr-16 rounded-md";
+  const smImgElementsCreate = "w-72 mr-14 rounded-md shadow-2xl";
+  const mdImgElementsCreate = "w-52 mr-16 rounded-md shadow-2xl";
 
   if (mdScreen.matches) {
     for (const i of carouselList) {
@@ -116,12 +116,12 @@ function drawCarousel() {
 function drawContents() {
   $main.insertAdjacentHTML("beforeend", recommendHTMLForm);
   $main.insertAdjacentHTML("beforeend", mbtiHTMLForm);
-  $main.insertAdjacentHTML("beforeend", similarHTMLForm);
+  $main.insertAdjacentHTML("beforeend", similarGenreHTMLForm);
 }
 
 function initMain() {
   document.querySelector("#mbtiRecommend").style.display = "none";
-  document.querySelector("#similarRecommend").style.display = "none";
+  document.querySelector("#similarGenreRecommend").style.display = "none";
 }
 
 function drawMain() {
