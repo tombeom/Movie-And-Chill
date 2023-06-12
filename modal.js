@@ -3,6 +3,7 @@ const $closeBtn = document.querySelector("#chatCloseBtn");
 
 function openChatModal() {
   $chatModal.style.display = "block";
+  document.querySelector("#chatInput").placeholder = "궁금한 것이 있으신가요?";
 }
 
 function closeChatModal() {

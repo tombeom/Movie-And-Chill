@@ -1,9 +1,9 @@
 const $homeBtn = document.querySelector("#homeBtn");
 const $mbtiBtn = document.querySelector("#mbtiBtn");
-const $genreBtn = document.querySelector("#genreBtn");
+const $similarBtn = document.querySelector("#similarBtn");
 const $movieRecommend = document.querySelector("#movieRecommend");
 const $mbtiRecommend = document.querySelector("#mbtiRecommend");
-const $genreRecommend = document.querySelector("#genreRecommend");
+const $similarRecommend = document.querySelector("#similarRecommend");
 
 function hideMenu(menu1, menu2) {
   menu1.style.display = "none";
@@ -15,20 +15,20 @@ function showMenu(menu1) {
 }
 
 function changeToMain() {
-  hideMenu($mbtiRecommend, $genreRecommend);
+  hideMenu($mbtiRecommend, $similarRecommend);
   showMenu($movieRecommend);
 }
 
 function changeToMBTI() {
-  hideMenu($movieRecommend, $genreRecommend);
+  hideMenu($movieRecommend, $similarRecommend);
   showMenu($mbtiRecommend);
 }
 
-function changeToGenre() {
+function changeToSimilar() {
   hideMenu($movieRecommend, $mbtiRecommend);
-  showMenu($genreRecommend);
+  showMenu($similarRecommend);
 }
 
 $homeBtn.addEventListener("click", changeToMain);
 $mbtiBtn.addEventListener("click", changeToMBTI);
-$genreBtn.addEventListener("click", changeToGenre);
+$similarBtn.addEventListener("click", changeToSimilar);

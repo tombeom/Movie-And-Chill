@@ -27,69 +27,76 @@
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gugi&family=IBM+Plex+Sans+KR:wght@200;400;600&family=Nanum+Gothic:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <style></style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
     class="font-['IBM_Plex_Sans_KR'] bg-[#ffffff] text-[#212631] dark:bg-[#10111a] dark:text-[#deeaff]"
   >
-    <div class="h-22"></div>
+    <!-- Header -->
     <header
-      class="w-full fixed bg-[#ffffff] drop-shadow-lg py-5 dark:bg-[#212531]"
+      class="w-full fixed bg-[#ffffff] drop-shadow-lg py-3 dark:bg-[#212531]"
     >
-      <div class="w-[1260px] mx-auto">
+      <!-- Title & Nav Btn -->
+      <div class="flex justify-between lg:w-[920px] lg:mx-auto">
+        <!-- Title-->
         <h1
-          class="font-[Gugi] text-[#cf311d] text-3xl text-left pl-20 font-bold inline-block"
+          class="font-[Gugi] text-[#cf311d] text-xl text-left pl-6 font-bold inline-block md:text-3xl md:pl-20"
           id="homeBtn"
         >
           <button>Movie & Chill</button>
         </h1>
-        <nav class="float-right mr-20">
-          <ul>
+        <!-- // Title-->
+        <!-- Nav Btn -->
+        <nav>
+          <ul class="flex gap-4 mr-4 text-xl md:mr-10 md:text-2xl">
             <li
-              class="inline-block rounded-full w-20 h-10 bg-slate-200 mx-4 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
+              class="px-2 rounded-full bg-slate-200 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
               id="mbtiBtn"
             >
-              <p class="text-center text-2xl mt-1">🧠</p>
+              🧠
             </li>
             <li
-              class="inline-block rounded-full w-20 h-10 bg-slate-200 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
-              id="genreBtn"
+              class="px-2 rounded-full bg-slate-200 dark:bg-inherit dark:border-2 dark:border-blue-500 active:bg-[#2e88ff]"
+              id="similarBtn"
             >
-              <p class="text-center text-2xl mt-1">🎬</p>
+              🎬
             </li>
           </ul>
         </nav>
+        <!-- // Nav Btn -->
       </div>
+      <!-- // Title & Nav Btn -->
     </header>
-    <div
-      class="w-full bg-[url('img/bg.jpg')] bg-cover bg-center grid grid-flow-row-dense grid-cols-5"
-    >
+    <!-- // Header -->
+    <!-- Masthead -->
+    <div class="pt-24 bg-[url('/img/bg.png')] bg-cover bg-center">
       <div
-        class="mt-40 ml-20 mb-24 text-left text-zinc-50 col-span-5 font-bold"
+        class="grid grid-row-3 gap-y-4 ml-6 text-left text-xl text-zinc-50 font-bold md:ml-20 md:text-2xl lg:w-[768px] lg:mx-auto"
       >
-        <p class="w-[1260px] mx-auto text-4xl pl-8 mb-4">
-          오늘 어떤 영화 보고 싶으세요?
-        </p>
-        <p class="w-[1260px] mx-auto text-4xl pl-8 mb-8">
-          ChatGPT에게 물어보세요!
-        </p>
-        <div class="w-[1260px] mx-auto">
-          <button
-            class="p-5 ml-8 mt-6 rounded-lg bg-[#4e9aff] text-xl active:bg-[#2e88ff]"
-            id="openChatModal"
-          >
-            지금 물어보기!
-          </button>
-        </div>
+        <p>오늘 어떤 영화 보고 싶으세요?</p>
+        <p>ChatGPT에게 물어보세요!</p>
+        <button
+          class="w-40 p-3 mb-10 rounded-lg bg-gradient-to-r from-[#06b6d4] to-[#4e9aff] active:from-[#FFE236] active:to-[#FFA369] md:w-60"
+          id="openChatModal"
+        >
+          지금 물어보기!
+        </button>
       </div>
     </div>
+    <!-- // Masthead -->
+    <!-- Chat Modal (JS) -->
     <div
       class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
       id="chatModal"
     ></div>
+    <!-- // Chat Modal -->
+    <!-- Main Contents -->
     <section>
-      <main class="w-[1260px] mx-auto text-center" id="main">
+      <main class="mx-auto text-center mb-16 w-[280px] md:w-[768px]" id="main">
         <p class="p-4 text-xl">🛠 페이지 로딩 중입니다. ⚙</p>
         <p class="p-4 text-xl">
           페이지가 로딩되지 않는다면 브라우저 설정의 javascript 사용 여부를
@@ -97,16 +104,20 @@
         </p>
       </main>
     </section>
-    <div class="h-24"></div>
+    <!-- // Main Contents -->
+    <!-- Footer -->
     <footer
-      class="w-full fixed bottom-0 text-center font-['Bebas_Neue'] bg-[#ffffff] shadow-lg shadow-black py-2.5 dark:bg-[#212531]"
-    >
-      &copy;2023 tombeom All rights reserved.
-    </footer>
+      class="w-full fixed bottom-0 font-light text-sm text-center bg-[#ffffff] shadow-lg shadow-black py-1 dark:bg-[#212531]"
+      id="footerMsg"
+    ></footer>
+    <!-- // Footer -->
+    <!-- Load JS Files -->
     <script src="form.js"></script>
     <script src="init.js"></script>
-    <script src="modal.js"></script>
     <script src="carousel.js"></script>
     <script src="menu.js"></script>
+    <script src="chat.js"></script>
+    <script src="recommend.js"></script>
+    <!-- // Load JS Files -->
   </body>
 </html>

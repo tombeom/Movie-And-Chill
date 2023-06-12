@@ -1,47 +1,72 @@
 const $main = document.querySelector("#main");
 const $chatModal = document.querySelector("#chatModal");
+const $footerMsg = document.querySelector("#footerMsg");
+const mdScreen = window.matchMedia("screen and (min-width: 768px)");
 
 const carouselList = [
   {
     id: "1",
     src: "img/carousel/1.png",
+    alt: "Moveie [La La Land] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/80095365",
   },
   {
     id: "2",
     src: "img/carousel/2.png",
+    alt: "Moveie [Django Unchained] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/70230640",
   },
   {
     id: "3",
     src: "img/carousel/3.png",
+    alt: "Moveie [Eternal Sunshine of the Spotless Mind] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/60034545",
   },
   {
     id: "4",
     src: "img/carousel/4.png",
+    alt: "Moveie [Kiki's Delivery Service] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/60027106",
   },
   {
     id: "5",
     src: "img/carousel/5.png",
+    alt: "Moveie [The Bourne Identity] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/60022985",
   },
   {
     id: "6",
     src: "img/carousel/6.png",
+    alt: "Moveie [My Tomorrow, Your Yesterday] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/80201634",
   },
   {
     id: "7",
     src: "img/carousel/7.png",
+    alt: "Moveie [Sully] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/80103102",
   },
   {
     id: "8",
     src: "img/carousel/8.png",
+    alt: "Moveie [Taken] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/70101374",
   },
   {
     id: "9",
     src: "img/carousel/9.png",
+    alt: "Moveie [Narco-Saints] thumbnail Image",
+    href: "https://www.netflix.com/kr/title/81343748",
   },
 ];
 
-function initMain() {
+function clearContents() {
   $main.innerText = "";
+}
+
+function refreshFooterMsg() {
+  const year = new Date().getFullYear().toString();
+  $footerMsg.innerText = "©" + year + " tombeom All rights reserved";
 }
 
 function drawChatModal() {
@@ -52,62 +77,60 @@ function drawCarousel() {
   carouselData = "";
   $main.insertAdjacentHTML("afterbegin", carouselHTMLForm);
   const $carouselContainer = document.querySelector("#carouselContainer");
-  for (const i of carouselList) {
-    console.log();
-    if (i.id == carouselList[0].id) {
+
+  const smImgElementsCreate = "w-72 mr-14 rounded-md";
+  const mdImgElementsCreate = "w-52 mr-16 rounded-md";
+
+  if (mdScreen.matches) {
+    for (const i of carouselList) {
       carouselData += `
-      <li class="inline-block">
-        <img
-          class="w-72 ml-8 mr-20 rounded-md drop-shadow-xl"
-          src="${i.src}"
-          alt=""
-        />
-      </li>
-      `;
-    } else if (i.id == carouselList[carouselList.length - 1].id) {
+        <li class="inline-block">
+          <a href="${i.href}">
+            <img
+              class="${mdImgElementsCreate}"
+              src="${i.src}"
+              alt="${i.alt}"
+            />
+          </a>
+        </li>
+        `;
+    }
+  } else {
+    for (const i of carouselList) {
       carouselData += `
-      <li class="inline-block">
-        <img
-          class="w-72 mr-8 rounded-md drop-shadow-xl"
-          src="${i.src}"
-          alt=""
-        />
-      </li>
-      `;
-    } else {
-      carouselData += `
-      <li class="inline-block">
-        <img
-          class="w-72 mr-20 rounded-md drop-shadow-xl"
-          src="${i.src}"
-          alt=""
-        />
-      </li>
-      `;
+        <li class="inline-block">
+          <a href="${i.href}">
+            <img
+              class="${smImgElementsCreate}"
+              src="${i.src}"
+              alt="${i.alt}"
+            />
+          </a>
+        </li>
+        `;
     }
   }
   $carouselContainer.insertAdjacentHTML("afterbegin", carouselData);
 }
 
-function drawRecommend() {
+function drawContents() {
   $main.insertAdjacentHTML("beforeend", recommendHTMLForm);
-}
-
-function drawMBTI() {
   $main.insertAdjacentHTML("beforeend", mbtiHTMLForm);
+  $main.insertAdjacentHTML("beforeend", similarHTMLForm);
 }
 
-function drawGenre() {
-  $main.insertAdjacentHTML("beforeend", genreHTMLForm);
+function initMain() {
+  document.querySelector("#mbtiRecommend").style.display = "none";
+  document.querySelector("#similarRecommend").style.display = "none";
 }
 
 function drawMain() {
+  clearContents();
   drawChatModal();
-  initMain();
+  refreshFooterMsg();
   drawCarousel();
-  drawRecommend();
-  drawMBTI();
-  drawGenre();
+  drawContents();
+  initMain();
 }
 
 drawMain();
