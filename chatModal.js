@@ -19,6 +19,7 @@ function clearChat() {
         "assistant는 한국 넷플릭스에 상영 중인 영화를 추천해 주는 역할이고 친구와 대화하듯 이야기해줘",
     },
   ];
+  closeMessageBox();
 }
 
 function clickChatOpenBtn() {
