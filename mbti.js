@@ -6,10 +6,12 @@ function checkMBTIInput(inputData) {
   if (mbtiRegEx.test(inputData)) {
     return true;
   } else if (inputData === "") {
-    alert("mbti를 입력해주세요!");
+    setMessageBoxContents(messageList[0]);
+    openMessageBox();
     return false;
   } else {
-    alert("올바른 mbti가 아닙니다.");
+    setMessageBoxContents(messageList[1]);
+    openMessageBox();
     return false;
   }
 }
@@ -27,3 +29,8 @@ function cilckMBTISendBtn() {
 }
 
 $mbtiSendBtn.addEventListener("click", cilckMBTISendBtn);
+$mbtiInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    cilckMBTISendBtn();
+  }
+});

@@ -80,27 +80,29 @@ function addChatData(player, msg) {
 
 function getValue() {
   let inputData = $chatInput.value.toString();
-  addUserChat(inputData);
-  $chatInput.value = "";
-  addChatData("user", inputData);
-  postData(chatData);
-  inputData = "";
-  document.querySelector("#chatInput").placeholder =
-    "또 궁금한 점이 있으신가요?";
-}
-
-function detectInputEnter(inputKey) {
-  if (inputKey.key === "Enter") {
-    getValue();
+  if (inputData === "") {
+    setMessageBoxContents(messageList[0]);
+    openMessageBox();
+  } else {
+    addUserChat(inputData);
+    $chatInput.value = "";
+    addChatData("user", inputData);
+    postData(chatData);
+    inputData = "";
+    document.querySelector("#chatInput").placeholder =
+      "또 궁금한 점이 있으신가요?";
   }
 }
 
 $chatSendBtn.addEventListener("click", getValue);
-$chatInput.addEventListener("keydown", (inputKey) =>
-  detectInputEnter(inputKey)
-);
 
-$chatClearBtn.addEventListener("click", clearChat);
+$chatInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    getValue();
+  }
+});
+
+$chatClearBtn.addEventListener("click", checkClearChat);
 
 async function postData(chatData) {
   const url = "https://estsoft-openai-api.jejucodingcamp.workers.dev/";

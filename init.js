@@ -1,5 +1,6 @@
 const $main = document.querySelector("#main");
 const $chatModal = document.querySelector("#chatModal");
+const $messageBox = document.querySelector("#messageBox");
 const $footerMsg = document.querySelector("#footerMsg");
 const mdScreen = window.matchMedia("screen and (min-width: 768px)");
 
@@ -70,7 +71,11 @@ function refreshFooterMsg() {
 }
 
 function drawChatModal() {
-  $chatModal.insertAdjacentHTML("afterbegin", modalHTMLForm);
+  $chatModal.insertAdjacentHTML("afterbegin", chatModalHTMLForm);
+}
+
+function drawMessageBox() {
+  $messageBox.insertAdjacentHTML("afterbegin", messageBoxHTMLForm);
 }
 
 function drawCarousel() {
@@ -127,6 +132,7 @@ function initMain() {
 function drawMain() {
   clearContents();
   drawChatModal();
+  drawMessageBox();
   refreshFooterMsg();
   drawCarousel();
   drawContents();

@@ -51,7 +51,8 @@ function cilckRecommendSendBtn() {
   let inputData4 = $recommendQuestion4Input.value.toString();
 
   if (inputData4 === "") {
-    alert();
+    setMessageBoxContents(messageList[0]);
+    openMessageBox();
   } else {
     let sendData =
       "오늘 날씨는 " +
@@ -92,7 +93,8 @@ changeQuestions(
 
 $recommendQuestion1NextBtn.addEventListener("click", function () {
   if ($recommendQuestion1Input.value.toString() === "") {
-    alert();
+    setMessageBoxContents(messageList[0]);
+    openMessageBox();
   } else {
     changeQuestions(
       $recommendQuestion2,
@@ -100,6 +102,22 @@ $recommendQuestion1NextBtn.addEventListener("click", function () {
       $recommendQuestion3,
       $recommendQuestion4
     );
+  }
+});
+
+$recommendQuestion1Input.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    if ($recommendQuestion1Input.value.toString() === "") {
+      setMessageBoxContents(messageList[0]);
+      openMessageBox();
+    } else {
+      changeQuestions(
+        $recommendQuestion2,
+        $recommendQuestion1,
+        $recommendQuestion3,
+        $recommendQuestion4
+      );
+    }
   }
 });
 
@@ -114,7 +132,8 @@ $recommendQuestion2BeforeBtn.addEventListener("click", function () {
 
 $recommendQuestion2NextBtn.addEventListener("click", function () {
   if ($recommendQuestion2Input.value.toString() === "") {
-    alert();
+    setMessageBoxContents(messageList[0]);
+    openMessageBox();
   } else {
     changeQuestions(
       $recommendQuestion3,
@@ -122,6 +141,22 @@ $recommendQuestion2NextBtn.addEventListener("click", function () {
       $recommendQuestion2,
       $recommendQuestion4
     );
+  }
+});
+
+$recommendQuestion2Input.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    if ($recommendQuestion2Input.value.toString() === "") {
+      setMessageBoxContents(messageList[0]);
+      openMessageBox();
+    } else {
+      changeQuestions(
+        $recommendQuestion3,
+        $recommendQuestion1,
+        $recommendQuestion2,
+        $recommendQuestion4
+      );
+    }
   }
 });
 
@@ -136,7 +171,8 @@ $recommendQuestion3BeforeBtn.addEventListener("click", function () {
 
 $recommendQuestion3NextBtn.addEventListener("click", function () {
   if ($recommendQuestion3Input.value.toString() === "") {
-    alert();
+    setMessageBoxContents(messageList[0]);
+    openMessageBox();
   } else {
     changeQuestions(
       $recommendQuestion4,
@@ -144,6 +180,22 @@ $recommendQuestion3NextBtn.addEventListener("click", function () {
       $recommendQuestion2,
       $recommendQuestion3
     );
+  }
+});
+
+$recommendQuestion3Input.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    if ($recommendQuestion3Input.value.toString() === "") {
+      setMessageBoxContents(messageList[0]);
+      openMessageBox();
+    } else {
+      changeQuestions(
+        $recommendQuestion4,
+        $recommendQuestion1,
+        $recommendQuestion2,
+        $recommendQuestion3
+      );
+    }
   }
 });
 
@@ -157,3 +209,9 @@ $recommendQuestion4BeforeBtn.addEventListener("click", function () {
 });
 
 $recommendQuestion4SendBtn.addEventListener("click", cilckRecommendSendBtn);
+
+$recommendQuestion4Input.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    cilckRecommendSendBtn();
+  }
+});

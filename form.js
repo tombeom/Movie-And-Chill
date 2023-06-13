@@ -1,4 +1,4 @@
-const modalHTMLForm = `
+const chatModalHTMLForm = `
 <div
   class="bg-slate-100 border-2 rounded-lg drop-shadow-xl mt-10 mb-16 mx-6"
   id="chatForm"
@@ -30,6 +30,39 @@ const modalHTMLForm = `
       id="chatSendBtn"
     >
       <i class="fa-solid fa-comment"></i>
+    </button>
+  </div>
+</div>
+`;
+
+const messageBoxHTMLForm = `
+<div
+  class="flex flex-col items-center relative top-1/4 mx-auto p-5 border w-11/12 drop-shadow-lg rounded-md bg-slate-100 dark:text-[#212631] md:w-96"
+>
+  <p
+    class="mt-2 w-10 h-10 rounded-full bg-[#fbecee] text-center text-2xl md:text-3xl"
+    id="messageBoxIcon"
+  ></p>
+  <p class="py-5 font-bold md:text-xl" id="messageBoxTitle"></p>
+  <p class="md:font-light md:text-lg" id="messageBoxText"></p>
+  <button
+    class="hidden mt-10 mb-6 p-1 bg-gradient-to-r from-[#06b6d4] to-[#4e9aff] text-white font-bold rounded-lg w-3/4 drop-shadow-lg active:to-[#FFA369] md:text-lg"
+    id="messageBoxOkBtn"
+  >
+    확인
+  </button>
+  <div class="hidden mt-10 mb-6" id="messageBoxYesNoBtn">
+    <button
+      class="mr-4 mt-8 px-7 py-2 bg-slate-200 font-bold rounded-lg drop-shadow-lg active:bg-slate-300 md:text-lg"
+      id="messageBoxNoBtn"
+    >
+      취소
+    </button>
+    <button
+      class="ml-4 mt-8 px-7 py-2 bg-gradient-to-r from-[#06b6d4] to-[#4e9aff] text-white font-bold rounded-lg drop-shadow-lg active:to-[#FFA369] md:text-lg"
+      id="messageBoxYesBtn"
+    >
+      확인
     </button>
   </div>
 </div>

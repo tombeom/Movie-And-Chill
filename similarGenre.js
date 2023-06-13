@@ -4,7 +4,8 @@ const $similarGenreInput = document.querySelector("#similarGenreInput");
 function cilckSimilarGenreSendBtn() {
   let inputData = $similarGenreInput.value.toString();
   if (inputData === "") {
-    alert();
+    setMessageBoxContents(messageList[0]);
+    openMessageBox();
   } else {
     let sendData =
       "나는 " + inputData + "를(을) 재밌게 봤는데 비슷한 영화를 추천해 줘!";
@@ -16,3 +17,8 @@ function cilckSimilarGenreSendBtn() {
 }
 
 $similarGenreSendBtn.addEventListener("click", cilckSimilarGenreSendBtn);
+$similarGenreInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    cilckSimilarGenreSendBtn();
+  }
+});
