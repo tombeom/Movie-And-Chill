@@ -1,9 +1,16 @@
+// index.html 로드 시 HTML 요소를 추가해주는 javascript
+
+// 요소 추가 시 위치를 지정하기 위한 QuerySelector
 const $main = document.querySelector("#main");
 const $chatModal = document.querySelector("#chatModal");
 const $messageBox = document.querySelector("#messageBox");
 const $footerMsg = document.querySelector("#footerMsg");
+
+// index.html 로드 시 유저 화면 크기를 감지해서 Carousel 데이터를 구분하기 위한 값
 const mdScreen = window.matchMedia("screen and (min-width: 768px)");
 
+// Carousel Array 데이터
+// Server 운용 시, Server에서 Carousel 데이터를 받아오도록 업데이트
 const carouselList = [
   {
     id: "1",
@@ -61,31 +68,50 @@ const carouselList = [
   },
 ];
 
+/**
+ * Contents 내 요소를 모두 삭제하는 함수 - init.js
+ */
 function clearContents() {
   $main.innerText = "";
 }
 
+/**
+ * Chat Modal HTML을 추가하는 함수 - init.js
+ */
+function drawChatModal() {
+  $chatModal.insertAdjacentHTML("afterbegin", chatModalHTMLForm);
+}
+
+/**
+ * Message Box HTML을 추가하는 함수 - init.js
+ */
+function drawMessageBox() {
+  $messageBox.insertAdjacentHTML("afterbegin", messageBoxHTMLForm);
+}
+
+/**
+ * 현재 년도에 맞춰 Footer의 Message를 입력하는 함수 - init.js
+ */
 function refreshFooterMsg() {
   const year = new Date().getFullYear().toString();
   $footerMsg.innerText = "©" + year + " tombeom All rights reserved";
 }
 
-function drawChatModal() {
-  $chatModal.insertAdjacentHTML("afterbegin", chatModalHTMLForm);
-}
-
-function drawMessageBox() {
-  $messageBox.insertAdjacentHTML("afterbegin", messageBoxHTMLForm);
-}
-
+/**
+ * Carousel 데이터를 불러와 Carousel 요소를 추가하는 함수 - init.js
+ */
 function drawCarousel() {
   carouselData = "";
   $main.insertAdjacentHTML("afterbegin", carouselHTMLForm);
   const $carouselContainer = document.querySelector("#carouselContainer");
 
+  // 소형 디바이스 이미지 값
   const smImgElementsCreate = "w-72 mr-14 rounded-md shadow-2xl";
+
+  // 중형 이상 디바이스 이미지 값
   const mdImgElementsCreate = "w-52 mr-16 rounded-md shadow-2xl";
 
+  // Carousel 데이터를 반복문으로 불러와 순차적으로 href, image, src, alt 값 추가
   if (mdScreen.matches) {
     for (const i of carouselList) {
       carouselData += `
@@ -115,20 +141,31 @@ function drawCarousel() {
         `;
     }
   }
+
+  // 추가된 데이터를 HTML으로 추가
   $carouselContainer.insertAdjacentHTML("afterbegin", carouselData);
 }
 
+/**
+ * Contents 내 Main Contents를 추가하는 함수 - init.js
+ */
 function drawContents() {
   $main.insertAdjacentHTML("beforeend", recommendHTMLForm);
   $main.insertAdjacentHTML("beforeend", mbtiHTMLForm);
   $main.insertAdjacentHTML("beforeend", similarGenreHTMLForm);
 }
 
+/**
+ * 초기 화면을 보여주기 위한 함수 (Recommend를 제외한 Contents 숨김 처리)  - init.js
+ */
 function initMain() {
   document.querySelector("#mbtiRecommend").style.display = "none";
   document.querySelector("#similarGenreRecommend").style.display = "none";
 }
 
+/**
+ * index.html 로드 시 초기 실행에 필요한 함수들 실행하는 함수 - init.js
+ */
 function drawMain() {
   clearContents();
   drawChatModal();
@@ -139,4 +176,5 @@ function drawMain() {
   initMain();
 }
 
+// index.html 로드 시 실행
 drawMain();
