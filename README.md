@@ -120,6 +120,12 @@ Modal로 구성된 채팅창에서 사용자는 Assistant와 자연스럽게 대
 MBTI 유형 별 어울리는 영화 추천 및 재미있게 본 영화와 유사한 영화 추천
 ```
 
+- 다크 모드 지원
+<div>
+  <img src="https://user-images.githubusercontent.com/90359639/245979396-c29c1fcd-253f-42c9-82e0-12926a27b1fa.png"/>
+  <img src="https://user-images.githubusercontent.com/90359639/245979414-8719c289-ae60-49d8-b4c8-33cd70911664.png"/>
+</div>
+
 - 반응형 웹 디자인 지원
 <div>
   <img width="300" src="https://user-images.githubusercontent.com/90359639/245685008-698b8a20-e99a-44a9-abab-8320a148d3bd.png"/>
