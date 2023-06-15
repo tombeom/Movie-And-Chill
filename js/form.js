@@ -95,7 +95,7 @@ const carouselHTMLForm = `
 <!-- Carousel Form -->
 <div>
   <!-- Carousel Title -->
-  <div><p class="text-xl my-8 md:text-3xl">Netflix 추천 영화</p></div>
+  <div><h2 class="text-xl my-8 md:text-3xl">Netflix 추천 영화</h2></div>
   <!-- // Carousel Title -->
   <!-- Carousel Container -->
   <div class="overflow-hidden">
@@ -129,7 +129,7 @@ const recommendHTMLForm = `
 <!-- Recommend Form -->
 <div id="movieRecommend">
   <!-- Recommend Title -->
-  <div class="my-8"><p class="text-lg md:text-3xl">ChatGPT에게 영화 추천 받기</p></div>
+  <div class="my-8"><h2 class="text-lg md:text-3xl">ChatGPT에게 영화 추천 받기</h2></div>
   <!-- Recommend Title -->
   <!-- Question 1 -->
   <div id="recommendQuestion1">
@@ -296,7 +296,7 @@ const mbtiHTMLForm = `
 <!-- MBTI Form -->
 <div id="mbtiRecommend">
   <!-- MBTI Title -->
-  <div class="my-8"><p class="text-lg md:text-3xl">MBTI 별 영화 추천</p></div>
+  <div class="my-8"><h2 class="text-lg md:text-3xl">MBTI 별 영화 추천</h2></div>
   <!-- // MBTI Title -->
   <div>
     <!-- MBTI Contents -->
@@ -337,7 +337,7 @@ const similarGenreHTMLForm = `
 <!-- Similar Genre Form -->
 <div id="similarGenreRecommend">
   <!-- Similar Genre Title -->
-  <div class="my-8"><p class="text-lg md:text-3xl">유사한 영화 추천</p></div>
+  <div class="my-8"><h2 class="text-lg md:text-3xl">유사한 영화 추천</h2></div>
   <!-- // Similar Genre Title -->
   <div>
     <!-- Similar Genre Contents -->

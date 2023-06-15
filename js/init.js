@@ -1,7 +1,7 @@
 // index.html 로드 시 HTML 요소를 추가해주는 javascript
 
 // 요소 추가 시 위치를 지정하기 위한 QuerySelector
-const $main = document.querySelector("#main");
+const $mainSection = document.querySelector("#mainSection");
 const $chatModal = document.querySelector("#chatModal");
 const $messageBox = document.querySelector("#messageBox");
 const $footerMsg = document.querySelector("#footerMsg");
@@ -76,7 +76,7 @@ const carouselList = [
  * Contents 내 요소를 모두 삭제하는 함수 - init.js
  */
 function clearContents() {
-  $main.innerText = "";
+  $mainSection.innerText = "";
 }
 
 /**
@@ -117,7 +117,7 @@ function refreshFooterMsg() {
  */
 function drawCarousel() {
   carouselData = "";
-  $main.insertAdjacentHTML("afterbegin", carouselHTMLForm);
+  $mainSection.insertAdjacentHTML("afterbegin", carouselHTMLForm);
   const $carouselContainer = document.querySelector("#carouselContainer");
 
   // 소형 디바이스 이미지 값
@@ -165,9 +165,9 @@ function drawCarousel() {
  * Contents 내 Main Contents를 추가하는 함수 - init.js
  */
 function drawContents() {
-  $main.insertAdjacentHTML("beforeend", recommendHTMLForm);
-  $main.insertAdjacentHTML("beforeend", mbtiHTMLForm);
-  $main.insertAdjacentHTML("beforeend", similarGenreHTMLForm);
+  $mainSection.insertAdjacentHTML("beforeend", recommendHTMLForm);
+  $mainSection.insertAdjacentHTML("beforeend", mbtiHTMLForm);
+  $mainSection.insertAdjacentHTML("beforeend", similarGenreHTMLForm);
 }
 
 /**
