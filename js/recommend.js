@@ -85,6 +85,18 @@ function cilckRecommendSendBtn() {
     addChatData("user", sendData);
     // Server POST
     postData(chatData);
+    // 모든 입력 값 초기화
+    $recommendQuestion1Input.value = "";
+    $recommendQuestion2Input.value = "";
+    $recommendQuestion3Input.value = "";
+    $recommendQuestion4Input.value = "";
+    // 초기 질문으로 변경
+    changeQuestions(
+      $recommendQuestion1,
+      $recommendQuestion2,
+      $recommendQuestion3,
+      $recommendQuestion4
+    );
   }
 }
 

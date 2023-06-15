@@ -44,6 +44,11 @@ function cilckMBTISendBtn() {
     addChatData("user", sendData);
     // Server POST
     postData(chatData);
+    // 입력 값 초기화
+    $mbtiInput.value = "";
+  } else {
+    // 입력 값 초기화
+    $mbtiInput.value = "";
   }
 }
 

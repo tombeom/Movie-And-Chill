@@ -21,6 +21,8 @@ function openChatModal(placeholderMsg) {
  */
 function closeChatModal() {
   $chatModal.style.display = "none";
+  // Chat Modal 비활성화 시 입력 값 초기화 ($chatInput - chat.js)
+  $chatInput.value = "";
 }
 
 /**

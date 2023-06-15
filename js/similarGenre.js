@@ -26,6 +26,8 @@ function cilckSimilarGenreSendBtn() {
     addChatData("user", sendData);
     // Server POST
     postData(chatData);
+    // 입력 값 초기화
+    $similarGenreInput.value = "";
   }
 }
 
