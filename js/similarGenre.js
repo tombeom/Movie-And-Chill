@@ -17,7 +17,7 @@ function cilckSimilarGenreSendBtn() {
   } else {
     // User가 입력한 값을 바탕으로 Server에게 전송할 문자열 생성
     let sendData =
-      "나는 " + inputData + "를(을) 재밌게 봤는데 비슷한 영화를 추천해 줘!";
+      "나는 " + inputData + "를(을) 재밌게 봤는데 비슷한 영화를 추천해 줘! 😆";
     // Chat Modal 활성화
     openChatModal("또 궁금한 점이 있으신가요?");
     // 전송할 문자열을 출력

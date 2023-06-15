@@ -4,6 +4,9 @@
 const $chatOpenBtn = document.querySelector("#chatOpenBtn");
 const $closeBtn = document.querySelector("#chatCloseBtn");
 
+// 처음 Chat Modal을 활성화한 걸 확인하기 위한 트리거 변수
+let firstOpenTrigger = true;
+
 /**
  * Chat Modal을 활성화하고 Chat Input의 placeholder 값을 설정하는 함수- chatModal.js
  * @param {string} placeholderMsg 표시 할 placeholder
@@ -40,6 +43,14 @@ function clearChat() {
  */
 function clickChatOpenBtn() {
   openChatModal("자유롭게 대화해 보세요");
+
+  // Chat Modal을 처음 열 경우 AIChat 추가 후 트리거 변수 (firstOpenTrigger - chatModal.js) 변경
+  if (firstOpenTrigger === true) {
+    addAIChat(
+      "안녕하세요🤖 혹시 영화에 대해 궁금한 점이 있나요? 제가 도와드릴 수 있어요!"
+    );
+    firstOpenTrigger = false;
+  }
 }
 
 // $chatOpenBtn 클릭 시 clickChatOpenBtn() 실행

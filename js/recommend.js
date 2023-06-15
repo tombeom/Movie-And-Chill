@@ -76,7 +76,7 @@ function cilckRecommendSendBtn() {
       inputData3 +
       "와(과) " +
       inputData4 +
-      "명이서 영화를 볼 건데 지금 볼만한 영화 추천해 줘";
+      "명이서 영화를 볼 건데 지금 볼만한 영화 추천해 줘😀";
     // Chat Modal 활성화
     openChatModal("또 궁금한 점이 있으신가요?");
     // 전송할 문자열을 출력
