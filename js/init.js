@@ -8,6 +8,10 @@ const $footerMsg = document.querySelector("#footerMsg");
 
 // index.html 로드 시 유저 화면 크기를 감지해서 Carousel 데이터를 구분하기 위한 값
 const mdScreen = window.matchMedia("screen and (min-width: 768px)");
+// index.html 로드 시 브라우저의 다크모드 여부를 확인하기 위한 값
+const isDark =
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 // Carousel Array 데이터
 // Server 운용 시, Server에서 Carousel 데이터를 받아오도록 업데이트
@@ -73,6 +77,17 @@ const carouselList = [
  */
 function clearContents() {
   $main.innerText = "";
+}
+
+/**
+ * 브라우저의 다크모드 지원 여부를 확인하고 theme-color를 바꿔주는 함수 - init.js
+ */
+function setThemeColor() {
+  if (isDark) {
+    document.querySelector("#themeColor").content = "#212531";
+  } else {
+    document.querySelector("#themeColor").content = "#ffffff";
+  }
 }
 
 /**
@@ -167,6 +182,7 @@ function initMain() {
  * index.html 로드 시 초기 실행에 필요한 함수들 실행하는 함수 - init.js
  */
 function drawMain() {
+  setThemeColor();
   clearContents();
   drawChatModal();
   drawMessageBox();
