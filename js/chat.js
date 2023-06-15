@@ -125,18 +125,17 @@ async function postData(chatData) {
   })
     .then((res) => res.json())
     .then((res) => {
-      try {
-        // Server에서 받은 값 중 Message만 가져온다
-        let aiMsg = res.choices[0].message.content.toString();
-        // 기존에 생성되었던 임시 AI Chat 삭제
-        deleteTempAIChat();
-        // Server에서 받은 Message를 Chat Data에 추가하고 출력
-        addAIChat(aiMsg);
-        addChatData("assistant", aiMsg);
-      } catch (e) {
-        // 오류 발생 시 예외 처리
-        addAIChat("오류가 발생했어요... 페이지를 새로고침 해주세요 🤖");
-      }
+      // Server에서 받은 값 중 Message만 가져온다
+      let aiMsg = res.choices[0].message.content.toString();
+      // 기존에 생성되었던 임시 AI Chat 삭제
+      deleteTempAIChat();
+      // Server에서 받은 Message를 Chat Data에 추가하고 출력
+      addAIChat(aiMsg);
+      addChatData("assistant", aiMsg);
+    })
+    .catch((e) => {
+      // 오류 발생 시 예외 처리
+      addAIChat("오류가 발생했어요... 페이지를 새로고침 해주세요 🤖");
     });
 }
 
